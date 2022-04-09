@@ -59,7 +59,7 @@ namespace WolfpackEditor.Editor.WolfpackWindows
       switch (_toolbarTab)
       {
         case 0: // Hierarchy
-          GUILayout.Label("Hierarchy", WolfpackStyles.headerStyle);
+          WolfpackStyles.Header("Hierarchy");
           DrawHierarchySettings();
           break;
       }
@@ -69,7 +69,7 @@ namespace WolfpackEditor.Editor.WolfpackWindows
     }
     private void DrawHierarchySettings()
     {
-      foreach (IWolfpackModule module in WolfpackModuleManager.modules[WolfpackModules.Hierarchy])
+      foreach (AWolfpackModule module in WolfpackModuleManager.modules[WolfpackModules.Hierarchy])
       {
         Type type = module.GetType();
 
@@ -79,7 +79,10 @@ namespace WolfpackEditor.Editor.WolfpackWindows
         }
 
         _foldouts[type] = EditorGUILayout.BeginFoldoutHeaderGroup(_foldouts[type], module.FriendlyName());
-        GUILayout.Label("H");
+        if (_foldouts[type])
+        {
+          module.Settings();
+        }
         EditorGUILayout.EndFoldoutHeaderGroup();
 
       }
@@ -87,6 +90,7 @@ namespace WolfpackEditor.Editor.WolfpackWindows
     
     private void LoadIcons()
     {
+      _toolbarIconsList = new List<GUIContent>();
       _wolfpackLogo = Resources.Load<Texture>("wolfpack-logo");
       _hierarchyIcon = Resources.Load<Texture>("hierarchy");
       

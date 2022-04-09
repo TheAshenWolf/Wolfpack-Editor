@@ -14,10 +14,10 @@ namespace WolfpackEditor.Editor
   [InitializeOnLoad]
   public class WolfpackModuleManager
   {
-    public static readonly Dictionary<WolfpackModules, IWolfpackModule[]> modules = new Dictionary<WolfpackModules, IWolfpackModule[]>()
+    public static readonly Dictionary<WolfpackModules, AWolfpackModule[]> modules = new Dictionary<WolfpackModules, AWolfpackModule[]>()
     {
       {
-        WolfpackModules.Hierarchy, new IWolfpackModule[]
+        WolfpackModules.Hierarchy, new AWolfpackModule[]
         {
           new HierarchyStripesModule(),
           new HierarchyToggleModule(),
@@ -28,10 +28,10 @@ namespace WolfpackEditor.Editor
 
     static WolfpackModuleManager()
     {
-      foreach (KeyValuePair<WolfpackModules, IWolfpackModule[]> entry in modules)
+      foreach (KeyValuePair<WolfpackModules, AWolfpackModule[]> entry in modules)
       {
-        IWolfpackModule[] submodules = entry.Value;
-        foreach (IWolfpackModule module in submodules)
+        AWolfpackModule[] submodules = entry.Value;
+        foreach (AWolfpackModule module in submodules)
         {
           module.Initialize();
         }

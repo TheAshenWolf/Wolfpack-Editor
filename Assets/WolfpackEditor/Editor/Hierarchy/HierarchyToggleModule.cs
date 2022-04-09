@@ -5,29 +5,31 @@ using WolfpackEditor.Editor.Tools.Interfaces;
 
 namespace WolfpackEditor.Editor.Hierarchy
 {
-  public class HierarchyToggleModule : IWolfpackModule
+  public class HierarchyToggleModule : AWolfpackModule
   {
-    public void Enable()
+    public override void Enable()
     {
+      base.Enable();
       EditorApplication.hierarchyWindowItemOnGUI += AddToggle;
     }
 
-    public void Disable()
+    public override void Disable()
     {
+      base.Disable();
       EditorApplication.hierarchyWindowItemOnGUI -= AddToggle;
     }
 
-    public void Initialize()
+    public override void Initialize()
     {
       Enable();
     }
 
-    public void Settings()
+    public override void Settings()
     {
-      throw new System.NotImplementedException();
+      base.Settings();
     }
 
-    public string FriendlyName() => "Toggle Module";
+    public override string FriendlyName() => "Toggle Module";
 
     private static void AddToggle(int instanceID, Rect rect)
     {

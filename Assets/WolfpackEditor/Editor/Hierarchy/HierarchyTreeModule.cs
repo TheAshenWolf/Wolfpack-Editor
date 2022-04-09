@@ -1,23 +1,26 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using WolfpackEditor.Editor.Tools;
 using WolfpackEditor.Editor.Tools.Interfaces;
 
 namespace WolfpackEditor.Editor.Hierarchy
 {
-  public class HierarchyTreeModule : IWolfpackModule
+  public class HierarchyTreeModule : AWolfpackModule
   {
     private Texture _plus;
     private Texture _minus;
-    public void Enable()
+    public override void Enable()
     {
+      base.Enable();
       EditorApplication.hierarchyWindowItemOnGUI += AddTree;
     }
 
-    public void Disable()
+    public override void Disable()
     {
+      base.Disable();
     }
 
-    public void Initialize()
+    public override void Initialize()
     {
       _plus = Resources.Load("plus") as Texture;
       _minus = Resources.Load("minus") as Texture;
@@ -25,12 +28,17 @@ namespace WolfpackEditor.Editor.Hierarchy
       Enable();
     }
 
-    public void Settings()
+    public override void Settings()
     {
-      throw new System.NotImplementedException();
+      base.Settings();
+      
+      GUILayout.BeginVertical(WolfpackStyles.areaStyle);
+        WolfpackStyles.Subheader("Color Settings");
+      GUILayout.EndVertical();
+      
     }
 
-    public string FriendlyName() => "Tree Module";
+    public override string FriendlyName() => "Tree Module";
 
     private void AddTree(int instanceId, Rect rect)
     {

@@ -4,29 +4,31 @@ using WolfpackEditor.Editor.Tools.Interfaces;
 
 namespace WolfpackEditor.Editor.Hierarchy
 {
-  public class HierarchyStripesModule : IWolfpackModule
+  public class HierarchyStripesModule : AWolfpackModule
   {
-    public void Enable()
+    public override void Enable()
     {
+      base.Enable();
       EditorApplication.hierarchyWindowItemOnGUI += AddStripes;
     }
 
-    public void Disable()
+    public override void Disable()
     {
+      base.Disable();
       EditorApplication.hierarchyWindowItemOnGUI += AddStripes;
     }
 
-    public void Initialize()
+    public override void Initialize()
     {
       Enable();
     }
 
-    public void Settings()
+    public override void Settings()
     {
-      throw new System.NotImplementedException();
+      base.Settings();
     }
 
-    public string FriendlyName() => "Stripes Module";
+    public override string FriendlyName() => "Stripes Module";
 
     private static void AddStripes(int instanceID, Rect rect)
     {
