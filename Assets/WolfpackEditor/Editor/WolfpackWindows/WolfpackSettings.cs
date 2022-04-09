@@ -42,7 +42,6 @@ namespace WolfpackEditor.Editor.WolfpackWindows
       _visibleContentRect = new Rect(_contentRect);
       _visibleContentRect.xMax -= 16;
       _toolbarRect = new Rect(0, 0, 50, 900);
-      
     }
 
     private void OnGUI()
@@ -101,6 +100,22 @@ namespace WolfpackEditor.Editor.WolfpackWindows
       _toolbarIconsList.Add(new GUIContent(_wolfpackLogo, "Scene"));
 
       _toolbarIcons = _toolbarIconsList.ToArray();
+    }
+
+    private void SaveAllSettings()
+    {
+      foreach (KeyValuePair<WolfpackModules, AWolfpackModule[]> keyValuePair in WolfpackModuleManager.modules)
+      {
+        foreach (AWolfpackModule module in keyValuePair.Value)
+        {
+          module.Save();
+        }
+      }
+    }
+
+    private void OnDisable()
+    {
+      SaveAllSettings();
     }
   }
 }

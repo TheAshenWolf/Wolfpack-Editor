@@ -2,9 +2,9 @@
 {
   public enum TreeColoringOption
   {
-    FromSeed,
-    FromArray,
-    AllOneColor,
-    AlternatingColors
+    FromSeed = 0,
+    FromArray = 1,
+    AllOneColor = 2,
+    AlternatingColors = 3
   }
 }

@@ -30,6 +30,15 @@ namespace WolfpackEditor.Editor.Hierarchy
     }
 
     public override string FriendlyName() => "Toggle Module";
+    protected override string SavesPrefix() => "Wolfpack_Hierarchy_ToggleModule_";
+
+    public override void Save()
+    {
+    }
+
+    public override void Load()
+    {
+    }
 
     private static void AddToggle(int instanceID, Rect rect)
     {

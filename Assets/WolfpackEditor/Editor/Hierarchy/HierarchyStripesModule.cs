@@ -15,12 +15,21 @@ namespace WolfpackEditor.Editor.Hierarchy
     public override void Disable()
     {
       base.Disable();
-      EditorApplication.hierarchyWindowItemOnGUI += AddStripes;
+      EditorApplication.hierarchyWindowItemOnGUI -= AddStripes;
     }
 
     public override void Initialize()
     {
       Enable();
+    }
+    
+    protected override string SavesPrefix() => "Wolfpack_Hierarchy_StripesModule_";
+    public override void Save()
+    {
+    }
+
+    public override void Load()
+    {
     }
 
     public override void Settings()
