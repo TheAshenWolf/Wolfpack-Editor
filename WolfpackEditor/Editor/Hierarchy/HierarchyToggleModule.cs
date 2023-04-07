@@ -50,7 +50,7 @@ namespace WolfpackEditor.Editor.Hierarchy
       }
 
       Rect toggleRect = new Rect(
-        rect.xMax - 4,
+        rect.xMax - 16,
         rect.yMin,
         15,
         rect.height);
