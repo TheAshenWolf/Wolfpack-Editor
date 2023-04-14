@@ -17,11 +17,15 @@ namespace WolfpackEditor.Editor
     public static readonly Dictionary<WolfpackModules, AWolfpackModule[]> modules = new Dictionary<WolfpackModules, AWolfpackModule[]>()
     {
       {
+        // The order here determines
+        // - The order in the menu
+        // - The order in which the modules are drawn (-> background alterations should be first)
         WolfpackModules.Hierarchy, new AWolfpackModule[]
         {
           new HierarchyStripesModule(),
+          new HierarchyHighlightModule(),
           new HierarchyToggleModule(),
-          new HierarchyTreeModule()
+          new HierarchyTreeModule(),
         }
       }
     };

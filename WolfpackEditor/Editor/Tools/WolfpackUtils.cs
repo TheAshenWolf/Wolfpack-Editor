@@ -15,6 +15,7 @@ namespace WolfpackEditor.Editor.Tools
       EditorPrefs.SetFloat(name + "_r", color.r);
       EditorPrefs.SetFloat(name + "_g", color.g);
       EditorPrefs.SetFloat(name + "_b", color.b);
+      EditorPrefs.SetFloat(name + "_a", color.a);
     }
 
     /// <summary>
@@ -31,7 +32,7 @@ namespace WolfpackEditor.Editor.Tools
         color.r = EditorPrefs.GetFloat(name + "_r");
         color.g = EditorPrefs.GetFloat(name + "_g");
         color.b = EditorPrefs.GetFloat(name + "_b");
-        color.a = 1;
+        color.a = EditorPrefs.GetFloat(name + "_a", 1f);
       }
 
       return color;
