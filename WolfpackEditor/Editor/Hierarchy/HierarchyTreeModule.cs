@@ -194,6 +194,7 @@ namespace WolfpackEditor.Editor.Hierarchy
 
     private void DrawIconOnBackground(Rect rect, Texture icon, Color backgroundColor)
     {
+      if (icon == null) return;
       GUI.color = backgroundColor.r * 0.299f + backgroundColor.g * 0.587f + backgroundColor.b * 0.114f > .2f
         ? Color.black
         : Color.white;
